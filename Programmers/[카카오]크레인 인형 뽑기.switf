@@ -1,0 +1,36 @@
+import Foundation
+
+func solution(_ board:[[Int]], _ moves:[Int]) -> Int {
+    var contain = board
+    var stack: [Int] = []
+    var count = 0
+    
+    for i in moves{  // 인형 뽑아서 stack에 넣기
+        for j in 0...contain[i-1].count - 1{
+            if contain[j][i-1] != 0 {
+                stack.append(contain[j][i-1])
+                contain[j][i-1] = 0
+                break;
+            }
+        }
+        
+    }
+    
+    for _ in 0...500{ // stack에서 2개 같이 있으면 지우기
+        if stack.count <= 1{
+            break;
+        }
+        for i in 0...stack.count - 2{
+            if stack[i] == stack[i+1]{
+                stack.remove(at: i)
+                stack.remove(at: i)
+                count += 2
+                
+                break;
+            }
+        }
+    }
+    
+    
+    return count
+}
