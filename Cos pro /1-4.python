@@ -1,0 +1,8 @@
+def solution(num):
+	answer = num + 1
+	
+	while True:
+		if '0' in str(answer):
+			answer += 1
+		else: break
+	return answer
