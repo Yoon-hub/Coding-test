@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
+
+
+def solution(K, words):
+	answer = 0
+	
+
+	str = ""
+	first = 1
+	b = []
+
+	for i,v in enumerate(words):
+		if first == 1:
+			str = v
+			first = 0
+		else:
+			if len(str + " " + v) <= K:
+				str = str + " " + v
+				if i == len(words) - 1:
+					b.append(str)
+			else:
+				b.append(str)
+				str = v
+				
+	return len(b)
